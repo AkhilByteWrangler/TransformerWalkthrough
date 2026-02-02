@@ -1,0 +1,10 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "watch": ["server"],
+  "ext": "ts",
+  "exec": "ts-node server/index.ts"
+}
