@@ -22,12 +22,12 @@ sudo apt install -y nginx
 sudo npm install -g pm2
 
 # Clone or pull latest code
-if [ -d "transformer-viz" ]; then
-    cd transformer-viz
+if [ -d "TransformerWalkthrough" ]; then
+    cd TransformerWalkthrough
     git pull
 else
-    git clone YOUR_REPO_URL transformer-viz
-    cd transformer-viz
+    git clone https://github.com/AkhilByteWrangler/TransformerWalkthrough.git TransformerWalkthrough
+    cd TransformerWalkthrough
 fi
 
 # Install dependencies
