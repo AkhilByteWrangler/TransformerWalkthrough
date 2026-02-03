@@ -7,7 +7,7 @@
     "server": "nodemon server/index.ts",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm install && npm run build && cd .. && npm run build:server",
     "build:server": "tsc server/index.ts --outDir dist --esModuleInterop --resolveJsonModule --skipLibCheck",
     "start": "node dist/server/index.js"
   },
