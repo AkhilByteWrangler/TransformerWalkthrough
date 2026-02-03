@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import { VisualizationRequest, VisualizationResponse } from './types/transformer';
 import { processTransformer } from './utils/transformer';
 
@@ -42,6 +43,13 @@ app.post('/api/visualize', (req: Request<{}, {}, VisualizationRequest>, res: Res
 app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'healthy', timestamp: new Date().toISOString() });
 });
+
+// Serve React app for all other routes
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (_req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
